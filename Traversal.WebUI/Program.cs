@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<IDestinationService, DestinationManager>();
 builder.Services.AddSingleton<IDestinationDal, EfDestinationDal>();
 
+builder.Services.AddSingleton<IFeatureService, FeatureManager>();
+builder.Services.AddSingleton<IFeatureDal, EfFeatureDal>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

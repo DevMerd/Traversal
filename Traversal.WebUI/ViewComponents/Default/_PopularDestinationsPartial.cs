@@ -12,6 +12,7 @@ namespace Traversal.WebUI.ViewComponents.Default
         //{
         //    _destinationManager = destinationManager;
         //}
+
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
 
         public async Task<IViewComponentResult> InvokeAsync()

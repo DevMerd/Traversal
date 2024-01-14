@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Traversal.Business.Abstract;
 using Traversal.Business.Concrete;
 using Traversal.DataAccess.Abstract;
 using Traversal.DataAccess.Concrete;
@@ -8,12 +9,20 @@ namespace Traversal.WebUI.ViewComponents.Default
 {
     public class _FeaturePartial : ViewComponent
     {
-        FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+        //FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
+
+        private readonly IFeatureService _featrue;
+        public _FeaturePartial(IFeatureService feature)
+        {
+            _featrue = feature;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync()
         {
             List<Feature> features = new List<Feature>();
 
-            var values = await featureManager.GetList();
+            //var values = await featureManager.GetList();
+            var values = await _featrue.GetList();
 
             foreach (var value in values)
             {
