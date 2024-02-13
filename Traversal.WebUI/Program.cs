@@ -1,15 +1,7 @@
-using Traversal.Business.Abstract;
-using Traversal.Business.Concrete;
-using Traversal.DataAccess.Abstract;
-using Traversal.DataAccess.Concrete;
-using Traversal.WebUI.ViewComponents.Default;
+using Traversal.Business.Registrations;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSingleton<IDestinationService, DestinationManager>();
-builder.Services.AddSingleton<IDestinationDal, EfDestinationDal>();
-
-builder.Services.AddSingleton<IFeatureService, FeatureManager>();
-builder.Services.AddSingleton<IFeatureDal, EfFeatureDal>();
+builder.Services.AddBusiness(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

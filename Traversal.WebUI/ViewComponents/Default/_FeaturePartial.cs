@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Traversal.Business.Abstract;
-using Traversal.Business.Concrete;
-using Traversal.DataAccess.Abstract;
-using Traversal.DataAccess.Concrete;
 using Traversal.Entity.Concrete;
 
 namespace Traversal.WebUI.ViewComponents.Default
