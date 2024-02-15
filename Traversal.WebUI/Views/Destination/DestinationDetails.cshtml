@@ -182,7 +182,8 @@
                     <vc:vc:_add-comment></vc:vc:_add-comment> *@
 
                     @await Component.InvokeAsync("_CommentList", new { id = ViewBag.Id })
-
+                    @await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
+                    @* @await Component.InvokeAsync("_AddComment") *@
                 </div>
             </div>
             <!--//blog-post-->

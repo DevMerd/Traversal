@@ -23,9 +23,9 @@ namespace Traversal.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task TAdd(Comment entity)
+        public async Task TAdd(Comment entity)
         {
-            throw new NotImplementedException();
+            await _commentDal.Insert(entity);
         }
 
         public Task TDelete(Comment entity)
