@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 using Traversal.Business.Abstract;
-using Traversal.Business.Concrete;
 using Traversal.Entity.Concrete;
 
 namespace Traversal.WebUI.Controllers
@@ -24,6 +22,7 @@ namespace Traversal.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> DestinationDetails(int id)
         {
+            ViewBag.Id = id;
             var data = await _destinationService.GetById(id);
             return View(data);
         }
@@ -31,8 +30,6 @@ namespace Traversal.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> DestinationDetails(Destination destination)
         {
-
-
             return View();
         }
     }

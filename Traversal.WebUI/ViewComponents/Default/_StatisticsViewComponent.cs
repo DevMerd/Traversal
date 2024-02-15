@@ -3,7 +3,7 @@ using Traversal.DataAccess.Context;
 
 namespace Traversal.WebUI.ViewComponents.Default
 {
-    public class _StatisticsPartial : ViewComponent
+    public class _StatisticsViewComponent : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {

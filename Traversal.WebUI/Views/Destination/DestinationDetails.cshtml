@@ -3,6 +3,7 @@
     ViewData["Title"] = "DestinationDetails";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
+
 <!doctype html>
 <html lang="zxx">
 <head>
@@ -177,8 +178,11 @@
                         </div>
                     </div>
 
-                    <vc:_comment-list></vc:_comment-list>
-                    <vc:vc:_add-comment></vc:vc:_add-comment>
+                    @* <vc:_comment-list asp-id="@ViewBag.i"></vc:_comment-list>
+                    <vc:vc:_add-comment></vc:vc:_add-comment> *@
+
+                    @await Component.InvokeAsync("_CommentList", new { id = ViewBag.Id })
+
                 </div>
             </div>
             <!--//blog-post-->

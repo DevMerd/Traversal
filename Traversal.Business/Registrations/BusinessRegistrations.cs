@@ -4,7 +4,6 @@ using Traversal.Business.Abstract;
 using Traversal.Business.Concrete;
 using Traversal.DataAccess.Abstract;
 using Traversal.DataAccess.Concrete;
-using Traversal.DataAccess.Context;
 
 namespace Traversal.Business.Registrations
 {
@@ -23,6 +22,9 @@ namespace Traversal.Business.Registrations
 
             services.AddSingleton<ITestimonialService, TestimonialManager>();
             services.AddSingleton<ITestimonialDal, EfTestimonialDal>();
+
+            services.AddSingleton<ICommentService, CommentManager>();
+            services.AddSingleton<ICommentDal, EfCommentDal>();
 
         }
     }

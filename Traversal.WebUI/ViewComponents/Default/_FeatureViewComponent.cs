@@ -4,14 +4,14 @@ using Traversal.Entity.Concrete;
 
 namespace Traversal.WebUI.ViewComponents.Default
 {
-    public class _FeaturePartial : ViewComponent
+    public class _FeatureViewComponent : ViewComponent
     {
         //FeatureManager featureManager = new FeatureManager(new EfFeatureDal());
 
-        private readonly IFeatureService _featrue;
-        public _FeaturePartial(IFeatureService feature)
+        private readonly IFeatureService _feature;
+        public _FeatureViewComponent(IFeatureService feature)
         {
-            _featrue = feature;
+            _feature = feature;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
@@ -19,7 +19,7 @@ namespace Traversal.WebUI.ViewComponents.Default
             List<Feature> features = new List<Feature>();
 
             //var values = await featureManager.GetList();
-            var values = await _featrue.GetList();
+            var values = await _feature.GetList();
 
             foreach (var value in values)
             {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Traversal.Business.Abstract;
+﻿using Traversal.Business.Abstract;
 using Traversal.DataAccess.Abstract;
 using Traversal.Entity.Concrete;
 

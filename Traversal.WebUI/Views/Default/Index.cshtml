@@ -3,11 +3,15 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-@* @await Component.InvokeAsync("_SliderPartial"); *@
+@await Component.InvokeAsync("_Slider");
+@await Component.InvokeAsync("_PopularDestinations");
+@await Component.InvokeAsync("_Statistics");
+@await Component.InvokeAsync("_Feature");
+@await Component.InvokeAsync("_Testimonial");
 
-<vc:_slider-partial></vc:_slider-partial>
-<vc:_popular-destinations-partial></vc:_popular-destinations-partial>
-<vc:_statistics-partial></vc:_statistics-partial>
-<vc:_feature-partial></vc:_feature-partial>
-<vc:_sub-about-partial></vc:_sub-about-partial>
-<vc:_testimonial-partial></vc:_testimonial-partial>
+@* <vc:_slider></vc:_slider>
+<vc:_popular-destinations></vc:_popular-destinations>
+<vc:_statistics></vc:_statistics>
+<vc:_feature></vc:_feature>
+<vc:_sub-about></vc:_sub-about>
+<vc:_testimonial></vc:_testimonial> *@

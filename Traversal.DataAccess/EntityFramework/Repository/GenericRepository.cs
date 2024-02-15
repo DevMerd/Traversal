@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Traversal.DataAccess.EntityFramework.Repository
 {
@@ -41,11 +42,19 @@ namespace Traversal.DataAccess.EntityFramework.Repository
             }
         }
 
-        public async Task<T>GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            using(var context = new TContext())
+            using (var context = new TContext())
             {
                 return await context.Set<T>().FindAsync(id);
+            }
+        }
+
+        public async Task<List<T>> GetListByFilter(Expression<Func<T, bool>> filter)
+        {
+            using (var context = new TContext())
+            {
+                return await context.Set<T>().Where(filter).ToListAsync();
             }
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Traversal.WebUI.ViewComponents.Default
 {
-    public class _SliderPartial : ViewComponent
+    public class _SliderViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
