@@ -24,8 +24,8 @@ namespace Traversal.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> DestinationDetails(int id)
         {
-
-            return View();
+            var data = await _destinationService.GetById(id);
+            return View(data);
         }
 
         [HttpPost]

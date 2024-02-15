@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Traversal.Business.Abstract;
+﻿using Traversal.Business.Abstract;
 using Traversal.DataAccess.Abstract;
 using Traversal.Entity.Concrete;
 
@@ -18,9 +13,9 @@ namespace Traversal.Business.Concrete
             _destinationDal = destinationDal;
         }
 
-        public Task<Destination> GetById(int id)
+        public async Task<Destination> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _destinationDal.GetById(id);
         }
 
         public async Task<List<Destination>> GetList()

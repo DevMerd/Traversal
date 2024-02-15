@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Traversal.DataAccess.Concrete;
 
 namespace Traversal.DataAccess.EntityFramework.Repository
 {
@@ -39,6 +38,14 @@ namespace Traversal.DataAccess.EntityFramework.Repository
             {
                 context.Update(entity);
                 context.SaveChanges();
+            }
+        }
+
+        public async Task<T>GetById(int id)
+        {
+            using(var context = new TContext())
+            {
+                return await context.Set<T>().FindAsync(id);
             }
         }
     }
