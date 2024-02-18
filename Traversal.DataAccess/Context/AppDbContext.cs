@@ -1,14 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Traversal.Entity.Concrete;
 
 namespace Traversal.DataAccess.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole, string>
     {
         public DbSet<About> Abouts { get; set; }
         public DbSet<About2> About2s { get; set; }
@@ -24,7 +20,7 @@ namespace Traversal.DataAccess.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=TraversalDB;Trusted_Connection=True;TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=TraversalDb;Trusted_Connection=True;TrustServerCertificate=true;");
         }
     }
 }
