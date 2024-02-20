@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Traversal.Business.Registrations;
 using Traversal.DataAccess.Context;
 using Traversal.Entity.Concrete;
+using Traversal.WebUI.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBusiness(builder.Configuration);
@@ -17,6 +19,7 @@ builder.Services.AddIdentity<AppUser, AppRole>(options =>
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
 })
+    .AddErrorDescriber<CustomIdentityValidator>()
     .AddRoleManager<RoleManager<AppRole>>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -51,5 +54,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();
