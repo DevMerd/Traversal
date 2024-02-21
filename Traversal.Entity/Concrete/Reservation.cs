@@ -9,6 +9,6 @@
         public string Destination { get; set; }
         public DateTime ReservationDate { get; set; }
         public string Description { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
     }
 }
