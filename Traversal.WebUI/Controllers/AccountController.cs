@@ -7,13 +7,16 @@ using Traversal.WebUI.Models;
 namespace Traversal.WebUI.Controllers
 {
     [AllowAnonymous]
+    [Route("[Controller]/[Action]")]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(UserManager<AppUser> userManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -55,6 +58,20 @@ namespace Traversal.WebUI.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(UserSignInViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Profile", new { Area = "Member" });
+                }
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
     }
