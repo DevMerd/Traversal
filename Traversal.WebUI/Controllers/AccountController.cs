@@ -68,7 +68,7 @@ namespace Traversal.WebUI.Controllers
                 var result = await _signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Profile", new { Area = "Member" });
+                    return RedirectToAction("Index", "Dashboard", new { Area = "Member" });
                 }
                 return RedirectToAction("Login", "Account");
             }

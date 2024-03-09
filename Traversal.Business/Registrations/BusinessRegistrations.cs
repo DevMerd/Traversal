@@ -27,7 +27,10 @@ namespace Traversal.Business.Registrations
             services.AddSingleton<ICommentDal, EfCommentDal>();
 
             services.AddSingleton<IReservationService, ReservationManager>();
-            services.AddSingleton<IReservationDal,EfReservationDal>();
+            services.AddSingleton<IReservationDal, EfReservationDal>();
+
+            services.AddSingleton<IGuideService, GuideManager>();
+            services.AddSingleton<IGuideDal, EfGuideDal>();
 
         }
     }
