@@ -16,13 +16,29 @@ namespace Traversal.Business.Concrete
 
         public async Task<Reservation> GetById(int id)
         {
-           return await _reservationDal.GetById(id);
+            return await _reservationDal.GetById(id);
         }
 
         public async Task<List<Reservation>> GetList()
         {
             var datas = await _reservationDal.GetList();
             return datas;
+        }
+
+        public async Task<List<Reservation>> GetListApprovedReservation(string id)
+        {
+            return await _reservationDal.GetListApprovedReservation(id);
+
+        }
+
+        public async Task<List<Reservation>> GetListPendingApprovalReservation(string id)
+        {
+           return await _reservationDal.GetListPendingApprovalReservation(id);
+        }
+
+        public async Task<List<Reservation>> GetListPreviousReservation(string id)
+        {
+          return await _reservationDal.GetListPreviousReservation(id);
         }
 
         public async Task TAdd(Reservation entity)

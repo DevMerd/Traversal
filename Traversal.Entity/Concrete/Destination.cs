@@ -10,7 +10,7 @@ namespace Traversal.Entity.Concrete
     public class Destination
     {
         [Key]
-        public int DestinationId { get; set; }
+        public int Id { get; set; }
         public string City { get; set; }
         public string DayNight { get; set; }
         public double Price { get; set; }
@@ -24,5 +24,6 @@ namespace Traversal.Entity.Concrete
         public string Image2 { get; set; }
 
         public List<Comment> Comments { get; set; }
+        public List<Reservation> Reservations { get; set; }
     }
 }

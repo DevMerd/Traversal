@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Traversal.DataAccess.Context;
 
@@ -11,9 +12,11 @@ using Traversal.DataAccess.Context;
 namespace Traversal.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240308235154_DestinationRemovedFromReservation")]
+    partial class DestinationRemovedFromReservation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -369,11 +372,11 @@ namespace Traversal.DataAccess.Migrations
 
             modelBuilder.Entity("Traversal.Entity.Concrete.Destination", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DestinationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DestinationId"));
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
@@ -416,7 +419,7 @@ namespace Traversal.DataAccess.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.HasKey("Id");
+                    b.HasKey("DestinationId");
 
                     b.ToTable("Destinations");
                 });
@@ -546,9 +549,6 @@ namespace Traversal.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DestinationId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PersonCount")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -563,8 +563,6 @@ namespace Traversal.DataAccess.Migrations
                     b.HasKey("ReservationId");
 
                     b.HasIndex("AppUserId");
-
-                    b.HasIndex("DestinationId");
 
                     b.ToTable("Reservations");
                 });
@@ -688,15 +686,7 @@ namespace Traversal.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Traversal.Entity.Concrete.Destination", "Destination")
-                        .WithMany("Reservations")
-                        .HasForeignKey("DestinationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("AppUser");
-
-                    b.Navigation("Destination");
                 });
 
             modelBuilder.Entity("Traversal.Entity.Concrete.AppUser", b =>
@@ -707,8 +697,6 @@ namespace Traversal.DataAccess.Migrations
             modelBuilder.Entity("Traversal.Entity.Concrete.Destination", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }
